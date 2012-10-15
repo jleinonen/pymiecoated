@@ -102,28 +102,28 @@ class Mie(object):
    def qext(self):
       """Returns:
             The extinction efficiency. Multiply by the physical cross section
-            (pi*x**2) to get the cross section.
+            (pi*r**2) to get the cross section.
       """
       return self._get_scatt_prop("qext")
    
    def qsca(self):
       """Returns:
             The scattering efficiency. Multiply by the physical cross section
-            (pi*x**2) to get the cross section.
+            (pi*r**2) to get the cross section.
       """
       return self._get_scatt_prop("qsca")
    
    def qabs(self):
       """Returns:
             The absorption efficiency. Multiply by the physical cross section
-            (pi*x**2) to get the cross section.
+            (pi*r**2) to get the cross section.
       """
       return self._get_scatt_prop("qabs")
    
    def qb(self):
       """Returns:
             The backscattering efficiency. Multiply by the physical cross section
-            (pi*x**2) to get the cross section.
+            (pi*r**2) to get the cross section.
       """
       return self._get_scatt_prop("qb")
    
