@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Copyright (C) <year> <copyright holders>
+Copyright (C) 2012-2013 Jussi Leinonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -24,42 +24,52 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import numpy
 from numpy import array, pi
-from matplotlib import pyplot
+try:
+    from matplotlib import pyplot
+except ImportError:
+    pass
 from ..mie_coated import Mie
 
 
-def melting_hail():
-   """
-      A demo that calculates the backscattering cross sections of melting
-      hail at different stages of melting. The hailstones are modeled with
-      an ice core and a water shell.
-   """
-   c = 299792458.0
-   wl = c/5.6e9*1e3
-   m_i = complex(1.7844, 1.4773e-4)
-   m_w = complex(8.3355, 2.2173)
-   
-   D_shell = numpy.linspace(1, 30, 1000)
-   frac = numpy.arange(0.0,1.01,0.2)
+def melting_hail(plot=False):
+    """Melting hail demo.
+       
+    A demo that calculates the backscattering cross sections of melting
+    hail at different stages of melting. The hailstones are modeled with
+    an ice core and a water shell.
+    
+    Args:
+        plot: Set to True to plot the demo. This requires that matplotlib
+        is installed.
+    """
+    c = 299792458.0
+    wl = c/5.6e9*1e3
+    m_i = complex(1.7844, 1.4773e-4)
+    m_w = complex(8.3355, 2.2173)
 
-   k = 2*pi/wl
-   x_shell = k*D_shell
-   
-   xsect = {}
-   
-   mie = Mie(m=m_i,m2=m_w)
-   def xsect_b(xc,xs):
-         mie.x = xc
-         mie.y = xs
-         return mie.qb()*pi*xs**2
-   
-   for f in frac:      
-      x_core = x_shell * f**(1.0/3.0)      
-      xsect[f] = array([xsect_b(xc,xs) for (xc,xs) in zip(x_core,x_shell)])
-      pyplot.semilogy(D_shell, xsect[f], label="Ice fraction "+str(f))
-   
-   pyplot.xlabel(u"Diameter (mm)", fontsize=14)
-   pyplot.ylabel(u"Backscattering cross section (mm²)", fontsize=14)
-   pyplot.legend(loc="lower right")
-   
-   return xsect
+    D_shell = numpy.linspace(1, 30, 1000)
+    frac = numpy.arange(0.0,1.01,0.2)
+
+    k = 2*pi/wl
+    x_shell = k*D_shell
+
+    xsect = {}
+
+    mie = Mie(m=m_i,m2=m_w)
+    def xsect_b(xc,xs):
+        mie.x = xc
+        mie.y = xs
+        return mie.qb()*pi*xs**2
+
+    for f in frac:
+        x_core = x_shell * f**(1.0/3.0)
+        xsect[f] = array([xsect_b(xc,xs) for (xc,xs) in zip(x_core,x_shell)])
+        if plot:
+            pyplot.semilogy(D_shell, xsect[f], label="Ice fraction "+str(f))
+
+    if plot:
+        pyplot.xlabel(u"Diameter (mm)", fontsize=14)
+        pyplot.ylabel(u"Backscattering cross section (mm²)", fontsize=14)
+        pyplot.legend(loc="lower right")
+
+    return xsect

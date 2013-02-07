@@ -13,11 +13,13 @@ Requires NumPy and SciPy.
 """
 
 setup(name='pymiecoated',
-      version='0.1.0',
+      version='0.1.1',
+      download_url=\
+          'http://pymiecoated.googlecode.com/files/pymiecoated-0.1.1.zip',
       description='Single- and dual-layered Mie scattering computations',
       author='Jussi Leinonen',
       author_email='jsleinonen@gmail.com',
-      url='http://code.google.com/p/pymiecoated/',      
+      url='http://code.google.com/p/pymiecoated/',
       packages=['pymiecoated','pymiecoated.demos','pymiecoated.test'],
       license='MIT',
       long_description = long_description,
