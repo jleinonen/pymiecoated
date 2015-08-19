@@ -1,1 +1,1 @@
-from mie_coated import Mie
+from .mie_coated import Mie
