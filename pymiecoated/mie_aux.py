@@ -1,5 +1,5 @@
 """
-Copyright (C) 2012-2013 Jussi Leinonen
+Copyright (C) 2012-2016 Jussi Leinonen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -25,7 +25,7 @@ class Cache(dict):
         self.size = size
         self.log = []
 
-    def __setitem___(self, key, value):
+    def __setitem__(self, key, value):
         super(Cache, self).__setitem__(key, value)
         self.log.append(key)
         if len(self.log) > self.size:

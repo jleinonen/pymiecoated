@@ -27,7 +27,7 @@ import sys
 
 
 #some allowance for rounding errors etc
-epsilon = 1e2*sys.float_info.epsilon
+epsilon = 1e3*sys.float_info.epsilon
 
 
 def run_tests():
