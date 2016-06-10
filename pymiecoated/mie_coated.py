@@ -46,8 +46,8 @@ class MieScatterProps(object):
         return self._props[prop_name]
 
     def S12(self, u):
-        if self._S12 is None:
-            self._S12 = mie_S12(self._coeffs, u)
+        #if self._S12 is None:
+        self._S12 = mie_S12(self._coeffs, u)
         return self._S12
 
 
