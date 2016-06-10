@@ -98,7 +98,7 @@ def single_mie_coeff(eps,mu,x):
     gs1x = p1x-complex(0,1)*ch1x
 
     dnx = zeros(nmx,dtype=complex)
-    for j in xrange(nmx-1,0,-1):
+    for j in range(nmx-1,0,-1):
         r = (j+1.0)/z
         dnx[j-1] = r - 1.0/(dnx[j]+r)
     dn = dnx[:nmax]
@@ -144,7 +144,7 @@ def coated_mie_coeff(eps1,eps2,x,y):
     dnx = zeros(nmx,dtype=complex)
 
     for (z, dn) in zip((u,v,w),(dnu,dnv,dnw)):
-        for j in xrange(nmx-1,0,-1):
+        for j in range(nmx-1,0,-1):
             r = (j+1.0)/z
             dnx[j-1] = r - 1.0/(dnx[j]+r)
         dn[:] = dnx[:nmax]

@@ -20,9 +20,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 from numpy import sqrt
-from mie_coeffs import MieCoeffs
-from mie_aux import Cache
-from mie_props import mie_props, mie_S12
+from .mie_coeffs import MieCoeffs
+from .mie_aux import Cache
+from .mie_props import mie_props, mie_S12
 
 
 class MieScatterProps(object):
