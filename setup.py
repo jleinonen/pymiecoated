@@ -13,9 +13,9 @@ Requires NumPy and SciPy.
 """
 
 setup(name='pymiecoated',
-      version='0.1.1',
+      version='0.1.2',
       download_url=\
-          'http://pymiecoated.googlecode.com/files/pymiecoated-0.1.1.zip',
+          'http://pymiecoated.googlecode.com/files/pymiecoated-0.1.2.zip',
       description='Single- and dual-layered Mie scattering computations',
       author='Jussi Leinonen',
       author_email='jsleinonen@gmail.com',

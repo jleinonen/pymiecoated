@@ -90,7 +90,8 @@ def mie_pt(u,nmax):
 
     nn = arange(2,nmax,dtype=float)
     for n in nn:
-        p[n] = (2*n+1)/n*p[n-1]*u - (n+1)/n*p[n-2]
+        n_i = int(n)
+        p[n_i] = (2*n+1)/n*p[n_i-1]*u - (n+1)/n*p[n_i-2]
 
     t[2:] = (nn+1)*u*p[2:] - (nn+2)*p[1:-1]
 
